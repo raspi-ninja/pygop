@@ -147,6 +147,34 @@ class pygop(object):
 
         return True
 
+    # Get Level APIs
+
+    def getBulbLevelByDid(self, did):
+        'Gets state and level of the bulb identified by did'
+        self.carousel = self.__scanRooms(invalidate=True)
+        if not self.carousel:
+            print "Couldn't enumerate rooms or devices"
+            return False
+
+        for room in self.carousel["rooms"]:
+            for device in room["devices"]:
+                if device["did"] == str(did):
+                    return ((True if device["state"] == "1" else False),
+                        device["level"])
+
+    def getBulbLevelByName(self, name, onoff, level=0):
+        'Gets state and level of the bulb identified by name'
+        self.carousel = self.__scanRooms(invalidate=True)
+        if not self.carousel:
+            print "Couldn't enumerate rooms or devices"
+            return False
+
+        for room in self.carousel["rooms"]:
+            for device in room["devices"]:
+                if device["name"] == name:
+                    return ((True if device["state"] == "1" else False),
+                        device["level"])
+
     # Identify APIs
 
     def identifyBulbByDid(self, did):
