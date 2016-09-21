@@ -36,6 +36,9 @@ class pygop(object):
             sys.exit("Couldn't enumerate rooms or devices")
 
     # API Functions
+    def update(self):
+        """force status update"""
+        self.__scanRooms(invalidate=True)
 
     def printHouseInfo(self):
         'Gets data for all rooms and prints it to the screen'
