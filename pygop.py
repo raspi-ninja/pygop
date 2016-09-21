@@ -12,7 +12,7 @@ import xml.etree.ElementTree as ET
 if hasattr(ssl, '_create_unverified_context'):
     ssl._create_default_https_context = ssl._create_unverified_context
 
-__version__ = "0.0.2"
+__version__ = "0.0.5"
 cache_filename = "pygop.cache"
 cache_location = os.path.join(os.path.dirname(os.path.realpath(__file__)), cache_filename)
 GOPReturnCodes = {  '200': 'Command Succesful',
